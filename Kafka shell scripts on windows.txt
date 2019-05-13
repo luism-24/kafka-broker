@@ -1,0 +1,18 @@
+------- Iniciar servidor de kafka -----------------
+1. Iniciar zookeper: 
+	.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+	
+2. Iniciar Kafka Server: 
+	.\bin\windows\kafka-server-start.bat .\config\server.properties
+	
+3. Crear un tópico: 
+	.\bin\windows\kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic <Nombre del tópico>
+	
+4. Listar los tópicos del broker: 
+	.\bin\windows\kafka-topics.bat --list --bootstrap-server localhost:9092
+	
+5. Enviar mensajes - Iniciar el productor
+	.\bin\windows\kafka-console-producer.bat --broker-list localhost:9092 --topic <Nombre del tópico>
+	
+6. Iniciar el consumidor
+	.\bin\windows\kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic <Nombre del tópico> --from-beginning

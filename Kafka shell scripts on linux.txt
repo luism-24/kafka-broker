@@ -1,0 +1,18 @@
+------- Iniciar servidor de kafka -----------------
+1. Iniciar zookeper: 
+	bin/zookeeper-server-start.sh config/zookeeper.properties
+	
+2. Iniciar Kafka Server: 
+	bin/kafka-server-start.sh config/server.properties
+	
+3. Crear un tópico: 
+	bin/kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic <Nombre del tópico>
+	
+4. Listar los tópicos del broker: 
+	bin/kafka-topics.sh --list --bootstrap-server localhost:9092
+	
+5. Enviar mensajes - Iniciar el productor
+	bin/kafka-console-producer.sh --broker-list localhost:9092 --topic <Nombre del tópico>
+	
+6. Iniciar el consumidor
+	bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic <Nombre del tópico> --from-beginning
